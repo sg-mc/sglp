@@ -16,19 +16,4 @@ document.addEventListener('DOMContentLoaded', function() {
         fadeInObserver.observe(elem);
     });
 
-    // スムーススクロール
-    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
-    for (let link of smoothScrollLinks) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            let href = this.getAttribute('href');
-            let targetElement = document.querySelector(href);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
-
 });
