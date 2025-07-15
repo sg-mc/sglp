@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAINT GRAIL - 男性のためのスキンケア</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #2d2d2d 100%);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <!-- ナビゲーション -->
+    <nav class="fixed w-full z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold gradient-text">SAINT GRAIL</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#features" class="hover:text-purple-400 transition">特徴</a>
+                <a href="#products" class="hover:text-purple-400 transition">製品</a>
+                <a href="#howto" class="hover:text-purple-400 transition">使用方法</a>
+                <a href="#reviews" class="hover:text-purple-400 transition">レビュー</a>
+            </div>
+            <a href="https://www.amazon.co.jp/dp/B08F2D2WB1?th=1" target="_blank" class="inline-block">
+                <button class="bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full font-semibold transition">
+                    購入する
+                </button>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ヒーローセクション -->
+    <section class="hero-gradient min-h-screen flex items-center pt-20">
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
+                    本物の男が選ぶ<br>
+                    <span class="gradient-text">プレミアムスキンケア</span>
+                </h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    ビジネスもプライベートも妥協しない男性のために。<br>
+                    品質とラグジュアリーが融合した、新時代のメンズコスメ。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://www.amazon.co.jp/dp/B08F2D2WB1?th=1" target="_blank" class="inline-block">
+                        <button class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 px-8 py-4 rounded-full font-bold text-lg transition transform hover:scale-105">
+                            今すぐ始める
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="w-full h-[500px] bg-gradient-to-br from-purple-900/20 to-purple-600/20 rounded-3xl backdrop-blur-sm flex items-center justify-center overflow-hidden">
+                    <img src="images/hero-background.png" alt="SAINT GRAILスキンケア" class="w-full h-full object-cover rounded-3xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特徴セクション -->
+    <section id="features" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-16">なぜSAINT GRAILが選ばれるのか</h3>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 transition">
+                    <div class="text-4xl mb-4 text-purple-400"><i class="fas fa-bolt"></i></div>
+                    <h4 class="text-2xl font-bold mb-4">使いやすさ</h4>
+                    <p class="text-gray-400">なじみやすい使用感で、忙しい朝でも簡単にケア。</p>
+                </div>
+                <div class="bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 transition">
+                    <div class="text-4xl mb-4 text-purple-400"><i class="fas fa-shield-alt"></i></div>
+                    <h4 class="text-2xl font-bold mb-4">肌を保護</h4>
+                    <p class="text-gray-400">日常の汚れや乾燥から肌を守り、清潔な状態を保つ。</p>
+                </div>
+                <div class="bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 transition">
+                    <div class="text-4xl mb-4 text-purple-400"><i class="fas fa-microscope"></i></div>
+                    <h4 class="text-2xl font-bold mb-4">厳選された成分</h4>
+                    <p class="text-gray-400">品質にこだわった成分を使用し、快適な使用感を実現。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 製品セクション -->
+    <section id="products" class="py-20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-16">製品ラインナップ</h3>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl border border-purple-600">
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="h-40 bg-gradient-to-br from-blue-900/20 to-blue-600/20 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/lotion.png" alt="化粧水" class="w-full h-full object-contain">
+                            </div>
+                            <h5 class="text-xl font-bold mb-2">化粧水</h5>
+                            <p class="text-gray-400 text-sm">肌にうるおいを与え、なめらかに整える</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="h-40 bg-gradient-to-br from-purple-900/20 to-purple-600/20 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/milklotion.png" alt="乳液" class="w-full h-full object-contain">
+                            </div>
+                            <h5 class="text-xl font-bold mb-2">乳液</h5>
+                            <p class="text-gray-400 text-sm">肌を整え、しっとりとした使用感を実現</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="h-40 bg-gradient-to-br from-green-900/20 to-green-600/20 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
+                                <img src="images/serum.png" alt="美容オイル" class="w-full h-full object-contain">
+                            </div>
+                            <h5 class="text-xl font-bold mb-2">美容オイル</h5>
+                            <p class="text-gray-400 text-sm">肌になじむオイルで、ツヤのある仕上がりに</p>
+                        </div>
+                    </div>
+                    <div class="text-center border-t border-gray-700 pt-6">
+                        <h4 class="text-3xl font-bold mb-2">SAINT GRAIL 3点セット</h4>
+                        <p class="text-5xl font-bold text-purple-400 mb-2">¥5,980</p>
+                        <p class="text-gray-400">(税込)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用方法 -->
+    <section id="howto" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-16">簡単3ステップ</h3>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="flex-1 text-center">
+                        <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                            1
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">化粧水</h4>
+                        <p class="text-gray-400">洗顔後、化粧水で肌を整える</p>
+                    </div>
+                    <div class="flex-1 text-center">
+                        <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                            2
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">乳液</h4>
+                        <p class="text-gray-400">化粧水の後に乳液でしっかり保湿</p>
+                    </div>
+                    <div class="flex-1 text-center">
+                        <div class="w-20 h-20 bg-purple-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto mb-4">
+                            3
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">美容オイル</h4>
+                        <p class="text-gray-400">仕上げに美容オイルでツヤ感をプラス</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- レビューセクション -->
+    <section id="reviews" class="py-20">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center mb-16">お客様の声</h3>
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="bg-gray-900 p-6 rounded-2xl">
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">"使いやすくて続けやすいです。肌の調子も良い感じがしています。"</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl">
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">"乳液、美容オイルと使用したのは初めてでした。使ってみると肌の調子がいいです。あまり美容について意識が高くなかったですが、とてもよいです。外見にも気を遣うことが楽しみになってます。"</p>
+                </div>
+                <div class="bg-gray-900 p-6 rounded-2xl">
+                    <div class="flex mb-4">
+                        <span class="text-yellow-400">★★★★★</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">"スキンケアは面倒だと思っていましたが、これなら続けられます。肌の状態も整っている感じがしています。"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-20 bg-gradient-to-r from-purple-900 to-purple-600">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold mb-6">本格的なスキンケアを始めよう</h3>
+            <p class="text-xl mb-8">SAINT GRAIL 3点セットで、理想の肌へ</p>
+            <a href="https://www.amazon.co.jp/dp/B08F2D2WB1?th=1" target="_blank" class="inline-block">
+                <button class="bg-white text-purple-900 hover:bg-gray-100 px-12 py-4 rounded-full font-bold text-xl transition transform hover:scale-105">
+                    購入する
+                </button>
+            </a>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="py-12 bg-black border-t border-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center text-gray-400">
+                <p>&copy; 2024 SAINT GRAIL. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
