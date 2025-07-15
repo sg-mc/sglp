@@ -1,0 +1,251 @@
+/* 基本設定 */
+body {
+    font-family: 'Helvetica Neue', 'Arial', 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Meiryo', sans-serif;
+    margin: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+
+section {
+    padding: 80px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ヒーローセクション */
+.hero-section {
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('images/hero-background.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #007bff; /* アクセントカラー */
+    color: #fff;
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+/* 問題提起セクション */
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.problem-item {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border: 1px solid #333;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.problem-item:hover {
+    transform: translateY(-5px);
+}
+
+/* 商品紹介セクション */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    text-align: center;
+}
+
+.product-image-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #333;
+    margin-bottom: 20px;
+}
+
+.product-image {
+    width: 100%;
+    max-height: 300px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.product-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* 使い方セクション */
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.step-item {
+    width: 25%;
+}
+
+.step-number {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.step-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.step-arrow {
+    font-size: 2rem;
+    color: #007bff;
+}
+
+/* お客様の声セクション */
+.voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.voice-item {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-left: 5px solid #007bff;
+}
+
+.voice-image-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: #333;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.voice-text {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.voice-profile {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* CTAセクション */
+.cta-section {
+    text-align: center;
+    background-color: #1e1e1e;
+    padding: 80px 5%;
+}
+
+.offer-box {
+    border: 2px solid #007bff;
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.offer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.offer-price {
+    font-size: 1.8rem;
+    margin: 10px 0;
+}
+
+.offer-price strong {
+    color: #007bff;
+    font-size: 2.5rem;
+}
+
+.final-cta {
+    padding: 20px 50px;
+    font-size: 1.2rem;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* スクロールフェードイン */
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s, transform 0.8s;
+}
+
+.scroll-fade.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2rem;
+    }
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .steps-container {
+        flex-direction: column;
+    }
+    .step-item {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .step-arrow {
+        display: none;
+    }
+}
