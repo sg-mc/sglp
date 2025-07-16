@@ -52,49 +52,6 @@
         .delay-200 { transition-delay: 0.2s; }
         .delay-300 { transition-delay: 0.3s; }
         .delay-400 { transition-delay: 0.4s; }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            animation: fadeIn 0.3s;
-        }
-        .modal-content {
-            position: relative;
-            background-color: #1a1a1a;
-            margin: 5% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 90%;
-            max-width: 600px;
-            border-radius: 20px;
-            animation: slideIn 0.3s;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close:hover,
-        .close:focus {
-            color: #fff;
-        }
-        @keyframes fadeIn {
-            from {opacity: 0;}
-            to {opacity: 1;}
-        }
-        @keyframes slideIn {
-            from {transform: translateY(-50px); opacity: 0;}
-            to {transform: translateY(0); opacity: 1;}
-        }
         .ingredient-list {
             margin-top: 20px;
         }
@@ -123,6 +80,59 @@
             overflow: hidden;
             backdrop-filter: blur(5px);
         }
+        /* 拡張可能なカードスタイル */
+        .expandable-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+        .expandable-card .card-details {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            margin-top: 0;
+        }
+        /* ホバー時の親コンテナ */
+        .feature-grid {
+            display: grid;
+            align-items: start;
+        }
+        .expandable-card:hover {
+            z-index: 10;
+            box-shadow: 0 10px 40px rgba(118, 75, 162, 0.3);
+        }
+        .expandable-card:hover .card-details {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 20px;
+        }
+        /* 他のカードはホバー時に縮小しない */
+        .expandable-card:not(:hover) {
+            transition: all 0.5s ease;
+        }
+        .detail-item {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .detail-item:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #9ca3af;
+        }
+        .detail-title {
+            font-weight: bold;
+            color: #9ca3af;
+            margin-bottom: 5px;
+        }
+        .detail-description {
+            color: #d1d5db;
+            font-size: 14px;
+            line-height: 1.6;
+        }
     </style>
 </head>
 <body class="bg-black text-white">
@@ -138,7 +148,7 @@
             </div>
             <a href="https://www.amazon.co.jp/dp/B08F2D2WB1?th=1" target="_blank" class="inline-block">
                 <button class="bg-purple-600 hover:bg-purple-700 px-6 py-2 rounded-full font-semibold transition">
-                    購入する
+                    Amazonで今すぐ購入
                 </button>
             </a>
         </div>
@@ -156,10 +166,10 @@
                     ビジネスもプライベートも妥協しない男性のために。<br>
                     品質とラグジュアリーが融合した、新時代のメンズコスメ。
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://www.amazon.co.jp/dp/B08F2D2WB1?th=1" target="_blank" class="inline-block">
+                <div class="flex justify-center sm:justify-start">
+                    <a href="https://www.amazon.co.jp/dp/B08F2D2WB1?th=1" target="_blank" class="inline-block sm:ml-32 md:ml-40">
                         <button class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 px-8 py-4 rounded-full font-bold text-lg transition transform hover:scale-105">
-                            今すぐ始める
+                            Amazonで今すぐ購入
                         </button>
                     </a>
                 </div>
@@ -176,24 +186,75 @@
     <section id="features" class="py-20 bg-gray-900">
         <div class="container mx-auto px-4">
             <h3 class="text-4xl font-bold text-center mb-16 fade-in">なぜSAINT GRAILが選ばれるのか</h3>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 transition cursor-pointer fade-in delay-100" onclick="openUsabilityModal()">
+            <div class="feature-grid grid md:grid-cols-3 gap-8">
+                <div class="expandable-card bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 fade-in delay-100">
                     <div class="text-4xl mb-4 text-purple-400"><i class="fas fa-bolt"></i></div>
                     <h4 class="text-2xl font-bold mb-4">使いやすさ</h4>
                     <p class="text-gray-400">なじみやすい使用感で、忙しい朝でも簡単にケア。</p>
-                    <p class="text-sm text-purple-400 mt-2">クリックして詳細を見る →</p>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <div class="detail-title">素早い浸透</div>
+                            <div class="detail-description">べたつかない軽いテクスチャーで、肌にすぐになじみます。朝の忙しい時間でも、すぐに次のステップへ。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">シンプルな3ステップ</div>
+                            <div class="detail-description">化粧水→乳液→美容オイルの簡単ケア。スキンケア初心者でも迷いません。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">ワンプッシュ設計</div>
+                            <div class="detail-description">適量が分かりやすいプッシュ式ボトル。使いすぎや少なすぎを防ぎ、毎回最適な量でケアできます。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">さっぱりとした仕上がり</div>
+                            <div class="detail-description">男性の肌質に合わせた処方。テカリを抑えながら、必要な潤いはしっかりキープ。</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 transition cursor-pointer fade-in delay-200" onclick="openProtectionModal()">
+                <div class="expandable-card bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 fade-in delay-200">
                     <div class="text-4xl mb-4 text-purple-400"><i class="fas fa-shield-alt"></i></div>
                     <h4 class="text-2xl font-bold mb-4">肌を保護</h4>
                     <p class="text-gray-400">日常の汚れや乾燥から肌を守り、清潔な状態を保つ。</p>
-                    <p class="text-sm text-purple-400 mt-2">クリックして詳細を見る →</p>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <div class="detail-title">バリア機能の強化</div>
+                            <div class="detail-description">セラミドとヒアルロン酸が肌表面に保護膜を形成。外部刺激から肌を守ります。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">乾燥対策</div>
+                            <div class="detail-description">3段階の保湿システムで、朝から夜まで潤いをキープ。エアコンによる乾燥からも肌を保護。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">シェービング後のケア</div>
+                            <div class="detail-description">アロエベラエキスが肌を落ち着かせ、髭剃り後の肌荒れを防ぎます。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">エイジングケア</div>
+                            <div class="detail-description">コラーゲンと椿油が肌にハリを与え、年齢に負けない肌作りをサポート。</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 transition cursor-pointer fade-in delay-300" onclick="openModal()">
+                <div class="expandable-card bg-black/50 p-8 rounded-2xl border border-gray-800 hover:border-purple-600 fade-in delay-300">
                     <div class="text-4xl mb-4 text-purple-400"><i class="fas fa-microscope"></i></div>
                     <h4 class="text-2xl font-bold mb-4">厳選された成分</h4>
                     <p class="text-gray-400">品質にこだわった成分を使用し、快適な使用感を実現。</p>
-                    <p class="text-sm text-purple-400 mt-2">クリックして詳細を見る →</p>
+                    <div class="card-details">
+                        <div class="detail-item">
+                            <div class="detail-title">ヒアルロン酸Na</div>
+                            <div class="detail-description">1gで最大6リットルの水分を保持。肌の潤いを長時間キープします。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">加水分解コラーゲン</div>
+                            <div class="detail-description">肌に浸透しやすい低分子コラーゲン。ハリと弾力をサポート。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">プラセンタエキス</div>
+                            <div class="detail-description">アミノ酸やビタミンが豊富。肌の調子を整えます。</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-title">高純度椿油</div>
+                            <div class="detail-description">オレイン酸を豊富に含む天然オイル。肌への親和性が高く、しっとりとした仕上がりに。</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -301,11 +362,11 @@
     <!-- CTA -->
     <section class="py-20 bg-gradient-to-r from-purple-900 to-purple-600">
         <div class="container mx-auto px-4 text-center fade-in">
-            <h3 class="text-4xl font-bold mb-6">本格的なスキンケアを始めよう</h3>
+            <h3 class="text-4xl font-bold mb-6">自信のある肌を手に入れよう</h3>
             <p class="text-xl mb-8">SAINT GRAIL 3点セットで、理想の肌へ</p>
             <a href="https://www.amazon.co.jp/dp/B08F2D2WB1?th=1" target="_blank" class="inline-block">
                 <button class="bg-white text-purple-900 hover:bg-gray-100 px-12 py-4 rounded-full font-bold text-xl transition transform hover:scale-105">
-                    購入する
+                    Amazonで今すぐ購入
                 </button>
             </a>
         </div>
@@ -324,199 +385,8 @@
         </div>
     </footer>
 
-    <!-- 成分モーダル -->
-    <div id="ingredientModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 class="text-3xl font-bold mb-6 gradient-text">SAINT GRAIL 厳選成分</h2>
-            
-            <div class="ingredient-section lotion-section">
-                <h3 class="text-xl font-bold mb-4 text-purple-400">化粧水の主要成分</h3>
-                <div class="ingredient-list">
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">ヒアルロン酸Na</div>
-                        <div class="ingredient-benefit">1gで最大6リットルの水分を保持。肌の潤いを長時間キープします。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">加水分解コラーゲン</div>
-                        <div class="ingredient-benefit">肌に浸透しやすい低分子コラーゲン。ハリと弾力をサポート。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">プラセンタエキス</div>
-                        <div class="ingredient-benefit">アミノ酸やビタミンが豊富。肌の調子を整えます。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">アロエベラ葉エキス</div>
-                        <div class="ingredient-benefit">肌を落ち着かせ、潤いを与える天然成分。</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ingredient-section milklotion-section">
-                <h3 class="text-xl font-bold mb-4 text-purple-400">乳液の特徴成分</h3>
-                <div class="ingredient-list">
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">ツバキ種子油（椿油）</div>
-                        <div class="ingredient-benefit">日本古来の美容オイル。肌なじみが良く、べたつきません。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">グルコシルセラミド</div>
-                        <div class="ingredient-benefit">肌のバリア機能をサポート。外部刺激から肌を守ります。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">トコフェロール（ビタミンE）</div>
-                        <div class="ingredient-benefit">抗酸化作用で肌を健やかに保ちます。</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ingredient-section serum-section">
-                <h3 class="text-xl font-bold mb-4 text-purple-400">美容オイルの注目成分</h3>
-                <div class="ingredient-list">
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">高純度椿油</div>
-                        <div class="ingredient-benefit">オレイン酸を豊富に含む天然オイル。肌への親和性が高く、しっとりとした仕上がりに。</div>
-                    </div>
-                </div>
-            </div>
-
-            <p class="text-sm text-gray-400 mt-6 text-center">
-                ※全製品にパラベンフリー・無着色の処方を採用<br>
-                ※成分は製品改良により変更される場合があります
-            </p>
-        </div>
-    </div>
-
-    <!-- 使いやすさモーダル -->
-    <div id="usabilityModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeUsabilityModal()">&times;</span>
-            <h2 class="text-3xl font-bold mb-6 gradient-text">使いやすさの秘密</h2>
-            
-            <div class="ingredient-section">
-                <h3 class="text-xl font-bold mb-4 text-purple-400">忙しい男性のために設計</h3>
-                <div class="ingredient-list">
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">素早い浸透</div>
-                        <div class="ingredient-benefit">べたつかない軽いテクスチャーで、肌にすぐになじみます。朝の忙しい時間でも、すぐに次のステップへ。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">シンプルな3ステップ</div>
-                        <div class="ingredient-benefit">化粧水→乳液→美容オイルの簡単ケア。スキンケア初心者でも迷いません。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">ワンプッシュ設計</div>
-                        <div class="ingredient-benefit">適量が分かりやすいプッシュ式ボトル。使いすぎや少なすぎを防ぎ、毎回最適な量でケアできます。</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ingredient-section">
-                <h3 class="text-xl font-bold mb-4 text-purple-400">使用感へのこだわり</h3>
-                <div class="ingredient-list">
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">さっぱりとした仕上がり</div>
-                        <div class="ingredient-benefit">男性の肌質に合わせた処方。テカリを抑えながら、必要な潤いはしっかりキープ。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">微香性</div>
-                        <div class="ingredient-benefit">主張しすぎない柑橘系の香り。</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 肌を保護モーダル -->
-    <div id="protectionModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeProtectionModal()">&times;</span>
-            <h2 class="text-3xl font-bold mb-6 gradient-text">肌を守る3つの力</h2>
-            
-            <div class="ingredient-section">
-                <h3 class="text-xl font-bold mb-4 text-purple-400">外的ストレスからの保護</h3>
-                <div class="ingredient-list">
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">バリア機能の強化</div>
-                        <div class="ingredient-benefit">セラミドとヒアルロン酸が肌表面に保護膜を形成。外部刺激から肌を守ります。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">乾燥対策</div>
-                        <div class="ingredient-benefit">3段階の保湿システムで、朝から夜まで潤いをキープ。エアコンによる乾燥からも肌を保護。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">汚れ・ほこり対策</div>
-                        <div class="ingredient-benefit">肌表面を整えることで、汚れやほこりの付着を軽減。清潔な肌を長時間維持します。</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="ingredient-section">
-                <h3 class="text-xl font-bold mb-4 text-purple-400">日常のダメージケア</h3>
-                <div class="ingredient-list">
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">シェービング後のケア</div>
-                        <div class="ingredient-benefit">アロエベラエキスが肌を落ち着かせ、髭剃り後の肌荒れを防ぎます。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">ストレスケア</div>
-                        <div class="ingredient-benefit">ビタミンEとプラセンタエキスが、日々のストレスで疲れた肌をいたわります。</div>
-                    </div>
-                    <div class="ingredient-item">
-                        <div class="ingredient-name">エイジングケア</div>
-                        <div class="ingredient-benefit">コラーゲンと椿油が肌にハリを与え、年齢に負けない肌作りをサポート。</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
-        function openModal() {
-            document.getElementById('ingredientModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.getElementById('ingredientModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function openUsabilityModal() {
-            document.getElementById('usabilityModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeUsabilityModal() {
-            document.getElementById('usabilityModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        function openProtectionModal() {
-            document.getElementById('protectionModal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeProtectionModal() {
-            document.getElementById('protectionModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-
-        // モーダル外をクリックで閉じる
-        window.onclick = function(event) {
-            const ingredientModal = document.getElementById('ingredientModal');
-            const usabilityModal = document.getElementById('usabilityModal');
-            const protectionModal = document.getElementById('protectionModal');
-            
-            if (event.target == ingredientModal) {
-                closeModal();
-            } else if (event.target == usabilityModal) {
-                closeUsabilityModal();
-            } else if (event.target == protectionModal) {
-                closeProtectionModal();
-            }
-        }
-
         // スクロールアニメーション用のIntersection Observer
         document.addEventListener('DOMContentLoaded', function() {
             const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in');
@@ -525,6 +395,9 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                    } else {
+                        // 要素が画面外に出たら visible クラスを削除
+                        entry.target.classList.remove('visible');
                     }
                 });
             }, {
